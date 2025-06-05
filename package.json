@@ -1,0 +1,22 @@
+{
+  "name": "markdown-presentation-app",
+  "version": "1.0.0",
+  "description": "A stripped-down PowerPoint-like app with markdown slides",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "test": "cd frontend && npm test && cd ../backend && npm test",
+    "storybook": "cd frontend && npm run storybook",
+    "build-storybook": "cd frontend && npm run build-storybook"
+  },
+  "keywords": ["presentation", "markdown", "react", "nodejs"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
