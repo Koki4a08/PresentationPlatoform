@@ -185,6 +185,7 @@ const PresentationEditor = () => {
   const handleAddSlide = async () => {
     try {
       const newSlide = await presentationAPI.createSlide(id, {
+        title: `Slide ${slides.length + 1}`,
         content: '# New Slide\n\nAdd your content here...',
         layout: 'default',
         order: slides.length
@@ -193,8 +194,17 @@ const PresentationEditor = () => {
       setSlides([...slides, newSlide]);
       setCurrentSlide(newSlide);
       setSlideContent(newSlide.content);
+      
+      dispatch({
+        type: 'SET_MESSAGE',
+        payload: { text: 'Slide added successfully', type: 'success' }
+      });
     } catch (error) {
       console.error('Error creating slide:', error);
+      dispatch({
+        type: 'SET_MESSAGE',
+        payload: { text: 'Error adding slide', type: 'error' }
+      });
     }
   };
 
