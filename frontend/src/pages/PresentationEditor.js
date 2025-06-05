@@ -134,12 +134,12 @@ const PresentationEditor = () => {
           presentationAPI.getSlides(id)
         ]);
         
-        setPresentation(presentationResponse.data);
-        setSlides(slidesResponse.data);
+        setPresentation(presentationResponse);
+        setSlides(slidesResponse);
         
-        if (slidesResponse.data.length > 0) {
-          setCurrentSlide(slidesResponse.data[0]);
-          setSlideContent(slidesResponse.data[0].content || '');
+        if (slidesResponse.length > 0) {
+          setCurrentSlide(slidesResponse[0]);
+          setSlideContent(slidesResponse[0].content || '');
         }
       } catch (error) {
         console.error('Error fetching presentation:', error);
@@ -184,13 +184,12 @@ const PresentationEditor = () => {
 
   const handleAddSlide = async () => {
     try {
-      const response = await presentationAPI.createSlide(id, {
+      const newSlide = await presentationAPI.createSlide(id, {
         content: '# New Slide\n\nAdd your content here...',
         layout: 'default',
         order: slides.length
       });
       
-      const newSlide = response.data;
       setSlides([...slides, newSlide]);
       setCurrentSlide(newSlide);
       setSlideContent(newSlide.content);
@@ -232,7 +231,7 @@ const PresentationEditor = () => {
           </Button>
           <Button 
             className="primary" 
-            onClick={() => navigate(`/viewer/${id}`)}
+            onClick={() => navigate(`/presentation/${id}/view`)}
           >
             Preview
           </Button>

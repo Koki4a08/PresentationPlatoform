@@ -226,8 +226,8 @@ const PresentationViewer = () => {
           presentationAPI.getSlides(id)
         ]);
         
-        setPresentation(presentationResponse.data);
-        setSlides(slidesResponse.data.sort((a, b) => a.order - b.order));
+        setPresentation(presentationResponse);
+        setSlides(slidesResponse.sort((a, b) => a.order - b.order));
       } catch (error) {
         console.error('Error fetching presentation:', error);
       } finally {
@@ -318,7 +318,7 @@ const PresentationViewer = () => {
           </Button>
           <Button 
             className="primary" 
-            onClick={() => navigate(`/editor/${id}`)}
+            onClick={() => navigate(`/presentation/${id}/edit`)}
           >
             Edit
           </Button>
