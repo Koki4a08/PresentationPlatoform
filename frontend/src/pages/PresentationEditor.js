@@ -167,16 +167,9 @@ const PresentationEditor = () => {
           : slide
       ));
       
-      dispatch({
-        type: 'SET_MESSAGE',
-        payload: { text: 'Slide saved successfully', type: 'success' }
-      });
+      console.log('Slide saved successfully');
     } catch (error) {
       console.error('Error saving slide:', error);
-      dispatch({
-        type: 'SET_MESSAGE',
-        payload: { text: 'Error saving slide', type: 'error' }
-      });
     } finally {
       setSaving(false);
     }
@@ -195,16 +188,9 @@ const PresentationEditor = () => {
       setCurrentSlide(newSlide);
       setSlideContent(newSlide.content);
       
-      dispatch({
-        type: 'SET_MESSAGE',
-        payload: { text: 'Slide added successfully', type: 'success' }
-      });
+      console.log('Slide added successfully');
     } catch (error) {
       console.error('Error creating slide:', error);
-      dispatch({
-        type: 'SET_MESSAGE',
-        payload: { text: 'Error adding slide', type: 'error' }
-      });
     }
   };
 
